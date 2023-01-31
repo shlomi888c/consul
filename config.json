@@ -1,0 +1,31 @@
+{
+  "data_dir": "/var/lib/consul",
+  "datacenter": "dc1",
+  "domain": "consul",
+  "log_level": "INFO",
+  "node_name": "node1",
+  "bind_addr": "0.0.0.0",
+  "client_addr": "0.0.0.0",
+  "enable_syslog": true,
+  "ui": true,
+  "bootstrap_expect": 1,
+  "server": true,
+  "services": [
+    {
+      "id": "flaskapp",
+      "name": "flaskapp",
+      "tags": [
+        "web"
+      ],
+      "address": "3.208.16.221",
+      "port": 5000,
+      "check": {
+        "interval": "10s",
+        "http": "http://3.208.16.221:5000",
+        "timeout": "1s",
+        "deregister_critical_service_after": "30s"
+      }
+    }
+  ]
+}
+
